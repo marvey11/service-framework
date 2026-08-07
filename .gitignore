@@ -3,3 +3,5 @@ coverage.xml
 .coverage
 .coverage.*
 htmlcov/
+
+__pycache__/
