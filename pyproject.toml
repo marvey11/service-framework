@@ -1,0 +1,51 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "service-framework"
+version = "0.1.0"
+description = "Runtime foundation for Linux systemd --user background services"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.110.0",
+    "uvicorn[standard]>=0.28.0",
+    "pydantic>=2.6.0",
+    "psutil>=5.9.8",
+    "pyyaml>=6.0.1",
+    "click>=8.1.7",
+    "watchfiles>=0.21.0",
+    "httpx2>=2.9.1",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "pytest-cov>=7.1.0",
+    "ruff>=0.16.2",
+]
+
+[project.scripts]
+sfw = "service_framework.cli:main"
+sfw-telemetry = "service_framework.telemetry.daemon:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["service_framework"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/service_framework",
+    "/shell",
+]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--cov=service_framework --cov-report=term-missing --cov-report=xml --cov-report=html"
