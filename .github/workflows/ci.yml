@@ -2,9 +2,11 @@ name: CI
 
 on:
   push:
-    branches: [ main ]
+    branches:
+    - main
   pull_request:
-    branches: [ main ]
+    branches:
+    - main
 
 jobs:
   build-and-test:
@@ -23,17 +25,13 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: |
-          uv sync --all-extras --dev
+        run: uv sync --all-extras --dev
 
       - name: Run Ruff Lint Check
-        run: |
-          uv run ruff check .
+        run: uv run ruff check .
 
       - name: Run Ruff Format Check
-        run: |
-          uv run ruff format --check .
+        run: uv run ruff format --check .
 
       - name: Run Test Suite with Coverage
-        run: |
-          uv run pytest --cov-fail-under=80
+        run: uv run pytest --cov-fail-under=80
