@@ -11,10 +11,10 @@ requires-python = ">=3.12"
 dependencies = [
     "fastapi>=0.110.0",
     "uvicorn[standard]>=0.52.4",
-    "pydantic>=2.6.0",
+    "pydantic>=2.13.5",
     "psutil>=5.9.8",
     "pyyaml>=6.0.1",
-    "click>=8.1.7",
+    "click>=8.5.0",
     "watchfiles>=0.21.0",
     "httpx2>=2.12.0",
 ]
