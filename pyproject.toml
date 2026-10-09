@@ -9,7 +9,7 @@ description = "Runtime foundation for Linux systemd --user background services"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "fastapi>=0.110.0",
+    "fastapi>=0.142.2",
     "uvicorn[standard]>=0.54.0",
     "pydantic>=2.13.5",
     "psutil>=5.9.8",
